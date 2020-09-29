@@ -1,3 +1,5 @@
+using Lavanderia.Domain.Dto.Responses;
+
 namespace Lavanderia.Domain.Services
 {
     public interface IBaseService

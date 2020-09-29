@@ -1,15 +1,12 @@
 using Lavanderia.Domain.Enums;
 
-namespace Lavanderia.Domain.Models
+namespace Lavanderia.Domain.Dto.Requests
 {
-    public class OrderItem
+    public class CreateOrderItemRequest
     {
-        public int Id { get; }
         public ItemType Type { get; set; }
         public string Color { get; set; }
         public float Value { get; set; }
-
         public int OrderId { get; set; }
-        public virtual Order Order { get; private set; }
     }
 }

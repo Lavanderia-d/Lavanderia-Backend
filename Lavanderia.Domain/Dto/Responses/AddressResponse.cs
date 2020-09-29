@@ -1,15 +1,12 @@
-namespace Lavanderia.Domain.Models
+namespace Lavanderia.Domain.Dto.Responses
 {
-    public class Address
+    public class AddressResponse
     {
-        public int Id { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
         public string Complement { get; set; }
         public string Municipality { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
-        
-        public virtual Customer Customer { get; private set; }
     }
 }
