@@ -18,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
 namespace Lavanderia.Api
@@ -34,10 +35,16 @@ namespace Lavanderia.Api
             SetupDbContext(services);
             SetupControllers(services);
             SetupServices(services);
+            SetupSwagger(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(cfg =>
+                cfg.SwaggerEndpoint("/swagger/v1/swagger.json", "Lavanderia v1")
+            );
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
@@ -77,6 +84,24 @@ namespace Lavanderia.Api
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+        }
+
+        private void SetupSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(cfg =>
+            {
+                cfg.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Lavanderia API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Felipe Vieira",
+                        Email = "fvieiramacieldesouza58@gmail.com",
+                        Url = new Uri("https://github.com/MrChampz"),
+                    }
+                });
+            });
         }
 
         public IConfiguration Configuration { get; }
