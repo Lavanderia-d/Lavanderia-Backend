@@ -5,6 +5,12 @@ using Lavanderia.Domain.Dto.Requests;
 using Lavanderia.Domain.Models;
 using Newtonsoft.Json;
 
+using ApiCustomerRequest = Lavanderia.Api.Dto.Requests.CustomerRequest;
+using ApiCreateOrderRequest = Lavanderia.Api.Dto.Requests.CreateOrderRequest;
+using ApiUpdateOrderRequest = Lavanderia.Api.Dto.Requests.UpdateOrderRequest;
+using ApiCreateOrderItemRequest = Lavanderia.Api.Dto.Requests.CreateOrderItemRequest;
+using ApiUpdateOrderItemRequest = Lavanderia.Api.Dto.Requests.UpdateOrderItemRequest;
+
 namespace Lavanderia.UnitTests.Helpers
 {
     public static class DataFiles
@@ -28,6 +34,15 @@ namespace Lavanderia.UnitTests.Helpers
             DataFileNames.Add(typeof(OrderItem), items);
             DataFileNames.Add(typeof(CreateOrderItemRequest), items);
             DataFileNames.Add(typeof(UpdateOrderItemRequest), items);
+
+            // Controllers
+            DataFileNames.Add(typeof(ApiCustomerRequest), customers);
+
+            DataFileNames.Add(typeof(ApiCreateOrderRequest), orders);
+            DataFileNames.Add(typeof(ApiUpdateOrderRequest), orders);
+            
+            DataFileNames.Add(typeof(ApiCreateOrderItemRequest), items);
+            DataFileNames.Add(typeof(ApiUpdateOrderItemRequest), items);
         }
 
         public static List<T> Get<T>()

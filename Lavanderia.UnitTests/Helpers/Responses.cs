@@ -30,6 +30,6 @@ namespace Lavanderia.UnitTests.Helpers
             };
         }
 
-        private static int StatusCode(HttpStatusCode code) => (int)code;
+        public static int StatusCode(HttpStatusCode code) => (int)code;
     }
 }
