@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "João",
+        "phone": {
+            "id": 1,
+            "ddd": "11",
+            "number": "9 5555-4444"
+        },
+        "address": {
+            "id": 1,
+            "street": "R. das Bromélias",
+            "number": "105",
+            "complement": "",
+            "municipality": "Taboão da Serra",
+            "state": "São Paulo",
+            "postalCode": "06565-050"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Ana",
+        "phone": {
+            "id": 2,
+            "ddd": "11",
+            "number": "9 4445-4555"
+        },
+        "address": {
+            "id": 2,
+            "street": "Av. das Orquideas",
+            "number": "1004",
+            "complement": "Apto. 15 Cond. Varandas",
+            "municipality": "São Paulo",
+            "state": "São Paulo",
+            "postalCode": "05510-050"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Rosana",
+        "phone": {
+            "id": 3,
+            "ddd": "11",
+            "number": "9 5335-4554"
+        },
+        "address": {
+            "id": 3,
+            "street": "R. dos Gaviões",
+            "number": "12",
+            "complement": "",
+            "municipality": "Embu das Artes",
+            "state": "São Paulo",
+            "postalCode": "06355-050"
+        }
+    }
+]

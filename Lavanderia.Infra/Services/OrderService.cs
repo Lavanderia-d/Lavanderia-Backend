@@ -22,7 +22,7 @@ namespace Lavanderia.Infra.Services
             _repository = repository;
         }
 
-        public async Task<Response> GetAll(bool includeItems)
+        public async Task<Response> GetAll(bool includeItems = false)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace Lavanderia.Infra.Services
             }
         }
 
-        public async Task<Response> GetAllByCustomerId(int customerId, bool includeItems)
+        public async Task<Response> GetAllByCustomerId(int customerId, bool includeItems = false)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Lavanderia.Infra.Services
             }
         }
 
-        public async Task<Response> GetById(int id, bool includeItems)
+        public async Task<Response> GetById(int id, bool includeItems = false)
         {
             try
             {

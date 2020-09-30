@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "orderId": 1,
+        "color": "Verde",
+        "value": 20.5,
+        "type": 0
+    },
+    {
+        "id": 2,
+        "orderId": 1,
+        "color": "Azul",
+        "value": 10.5,
+        "type": 0
+    },
+    {
+        "id": 3,
+        "orderId": 1,
+        "color": "Vermelho",
+        "value": 10.5,
+        "type": 0
+    },
+    {
+        "id": 4,
+        "orderId": 2,
+        "color": "Amarelo",
+        "value": 35.5,
+        "type": 0
+    },
+    {
+        "id": 5,
+        "orderId": 2,
+        "color": "Laranja",
+        "value": 15.5,
+        "type": 0
+    },
+    {
+        "id": 6,
+        "orderId": 3,
+        "color": "Marrom",
+        "value": 20.5,
+        "type": 0
+    },
+    {
+        "id": 7,
+        "orderId": 4,
+        "color": "Verde",
+        "value": 15.5,
+        "type": 0
+    },
+    {
+        "id": 8,
+        "orderId": 5,
+        "color": "Preto",
+        "value": 50.5,
+        "type": 1
+    },
+    {
+        "id": 9,
+        "orderId": 6,
+        "color": "Branco",
+        "value": 90.5,
+        "type": 1
+    },
+    {
+        "id": 10,
+        "orderId": 6,
+        "color": "Preto",
+        "value": 50.5,
+        "type": 1
+    }
+]
