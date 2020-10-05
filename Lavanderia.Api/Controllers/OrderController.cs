@@ -21,26 +21,38 @@ namespace Lavanderia.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] bool includeItems = false)
+        public async Task<IActionResult> GetAll(
+            [FromQuery] bool includeItems = false,
+            [FromQuery] bool includeCustomers = false
+        )
         {
-            var response = await _service.GetAll(includeItems);
+            var response = await _service.GetAll(includeItems, includeCustomers);
             return StatusCode(response.Code, response);
         }
 
         [HttpGet("customer/{customerId}")]
         public async Task<IActionResult> GetAllByCustomerId(
             int customerId,
-            [FromQuery] bool includeItems = false
+            [FromQuery] bool includeItems = false,
+            [FromQuery] bool includeCustomer = false
         )
         {
-            var response = await _service.GetAllByCustomerId(customerId, includeItems);
+            var response = await _service.GetAllByCustomerId(
+                customerId,
+                includeItems,
+                includeCustomer
+            );
             return StatusCode(response.Code, response);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id, [FromQuery] bool includeItems = false)
+        public async Task<IActionResult> GetById(
+            int id,
+            [FromQuery] bool includeItems = false,
+            [FromQuery] bool includeCustomer = false
+        )
         {
-            var response = await _service.GetById(id, includeItems);
+            var response = await _service.GetById(id, includeItems, includeCustomer);
             return StatusCode(response.Code, response);
         }
 

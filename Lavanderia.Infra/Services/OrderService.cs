@@ -22,11 +22,14 @@ namespace Lavanderia.Infra.Services
             _repository = repository;
         }
 
-        public async Task<Response> GetAll(bool includeItems = false)
+        public async Task<Response> GetAll(
+            bool includeItems = false,
+            bool includeCustomers = false
+        )
         {
             try
             {
-                var orders = await _repository.GetAll(includeItems);
+                var orders = await _repository.GetAll(includeItems, includeItems);
                 var response = _mapper.Map<OrderResponse[]>(orders);
                 return OkResponse(null, response);
             }
@@ -36,11 +39,19 @@ namespace Lavanderia.Infra.Services
             }
         }
 
-        public async Task<Response> GetAllByCustomerId(int customerId, bool includeItems = false)
+        public async Task<Response> GetAllByCustomerId(
+            int customerId,
+            bool includeItems = false,
+            bool includeCustomer = false
+        )
         {
             try
             {
-                var orders = await _repository.GetAllByCustomerId(customerId, includeItems);
+                var orders = await _repository.GetAllByCustomerId(
+                    customerId,
+                    includeItems,
+                    includeCustomer
+                );
                 var response = _mapper.Map<OrderResponse[]>(orders);
                 return OkResponse(null, response);
             }
@@ -50,11 +61,15 @@ namespace Lavanderia.Infra.Services
             }
         }
 
-        public async Task<Response> GetById(int id, bool includeItems = false)
+        public async Task<Response> GetById(
+            int id,
+            bool includeItems = false,
+            bool includeCustomer = false
+        )
         {
             try
             {
-                var order = await _repository.GetById(id, includeItems);
+                var order = await _repository.GetById(id, includeItems, includeCustomer);
                 if (order == null)
                     return NotFoundResponse("Pedido não encontrado.");
 

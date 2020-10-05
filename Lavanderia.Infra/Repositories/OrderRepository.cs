@@ -11,7 +11,10 @@ namespace Lavanderia.Infra.Repositories
     {
         public OrderRepository(DataContext context) : base(context) {}
 
-        public async Task<Order[]> GetAll(bool includeItems)
+        public async Task<Order[]> GetAll(
+            bool includeItems = false,
+            bool includeCustomers = false
+        )
         {
             IQueryable<Order> query = _dbContext.Orders;
 
@@ -20,18 +23,32 @@ namespace Lavanderia.Infra.Repositories
                 query = query.Include(o => o.Items);
             }
 
+            if (includeCustomers)
+            {
+                query = query.Include(o => o.Customer);
+            }
+
             return await query.AsNoTracking()
                               .OrderBy(o => o.Id)
                               .ToArrayAsync();
         }
 
-        public async Task<Order[]> GetAllByCustomerId(int customerId, bool includeItems)
+        public async Task<Order[]> GetAllByCustomerId(
+            int customerId,
+            bool includeItems = false,
+            bool includeCustomer = false
+        )
         {
             IQueryable<Order> query = _dbContext.Orders;
 
             if (includeItems)
             {
                 query = query.Include(o => o.Items);
+            }
+
+            if (includeCustomer)
+            {
+                query = query.Include(o => o.Customer);
             }
 
             return await query.AsNoTracking()  
@@ -40,13 +57,22 @@ namespace Lavanderia.Infra.Repositories
                               .ToArrayAsync();
         }
 
-        public async Task<Order> GetById(int id, bool includeItems)
+        public async Task<Order> GetById(
+            int id,
+            bool includeItems = false,
+            bool includeCustomer = false
+        )
         {
             IQueryable<Order> query = _dbContext.Orders;
 
             if (includeItems)
             {
                 query = query.Include(o => o.Items);
+            }
+
+            if (includeCustomer)
+            {
+                query = query.Include(o => o.Customer);
             }
 
             return await query.AsNoTracking()

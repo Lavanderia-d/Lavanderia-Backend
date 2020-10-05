@@ -13,16 +13,16 @@ namespace Lavanderia.UnitTests.Helpers
 
             if (!exception)
             {
-                repository.Setup(x => x.GetAll(It.IsAny<bool>()))
-                    .ReturnsAsync((bool includeItems) =>
+                repository.Setup(x => x.GetAll(It.IsAny<bool>(), It.IsAny<bool>()))
+                    .ReturnsAsync((bool includeItems, bool includeCustomers) =>
                         Get<Order>().ToArray());
 
-                repository.Setup(x => x.GetAllByCustomerId(It.IsAny<int>(), It.IsAny<bool>()))
-                    .ReturnsAsync((int customerId, bool includeItems) =>
+                repository.Setup(x => x.GetAllByCustomerId(It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool>()))
+                    .ReturnsAsync((int customerId, bool includeItems, bool includeCustomer) =>
                         Get<Order>().Where(o => o.CustomerId == customerId).ToArray());
 
-                repository.Setup(x => x.GetById(It.IsAny<int>(), It.IsAny<bool>()))
-                    .ReturnsAsync((int id, bool includeItems) =>
+                repository.Setup(x => x.GetById(It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool>()))
+                    .ReturnsAsync((int id, bool includeItems, bool includeCustomer) =>
                         Get<Order>().FirstOrDefault(o => o.Id == id));
 
                 repository.Setup(x => x.Add(It.IsAny<Order>()))
@@ -33,13 +33,13 @@ namespace Lavanderia.UnitTests.Helpers
             }
             else
             {
-                repository.Setup(x => x.GetAll(It.IsAny<bool>()))
+                repository.Setup(x => x.GetAll(It.IsAny<bool>(), It.IsAny<bool>()))
                     .Throws(TestException);
 
-                repository.Setup(x => x.GetAllByCustomerId(It.IsAny<int>(), It.IsAny<bool>()))
+                repository.Setup(x => x.GetAllByCustomerId(It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool>()))
                     .Throws(TestException);
 
-                repository.Setup(x => x.GetById(It.IsAny<int>(), It.IsAny<bool>()))
+                repository.Setup(x => x.GetById(It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool>()))
                     .Throws(TestException);
                 
                 repository.Setup(x => x.Add(It.IsAny<Order>()))
