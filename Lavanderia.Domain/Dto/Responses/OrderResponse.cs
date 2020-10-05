@@ -8,6 +8,7 @@ namespace Lavanderia.Domain.Responses
     {
         public int Id { get; set; }
         public OrderStatus Status { get; set; }
+        public CustomerResponse Customer { get; set; }
         public virtual ICollection<OrderItemResponse> Items { get; set; }
     }
 }
